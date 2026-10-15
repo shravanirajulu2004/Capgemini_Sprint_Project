@@ -54,25 +54,43 @@ public class InventoryTest extends BaseClass {
         ip.sortProducts("lohi");
 
         List<WebElement> prices = ip.getProductPrices();
+//
+//        double firstPrice =
+//                Double.parseDouble(
+//                        prices.get(0)
+//                                .getText()
+//                                .replace("$", "")
+//                );
+//
+//        double lastPrice =
+//                Double.parseDouble(
+//                        prices.get(prices.size() - 1)
+//                                .getText()
+//                                .replace("$", "")
+//                );
+//
+//        Assert.assertTrue(
+//                firstPrice <= lastPrice,
+//                "Products are not sorted from low to high"
+//        );
+        for (int i = 0; i < prices.size() - 1; i++) {
 
-        double firstPrice =
-                Double.parseDouble(
-                        prices.get(0)
-                                .getText()
-                                .replace("$", "")
-                );
+            double currentPrice =
+                    Double.parseDouble(
+                            prices.get(i).getText().replace("$", "")
+                    );
 
-        double lastPrice =
-                Double.parseDouble(
-                        prices.get(prices.size() - 1)
-                                .getText()
-                                .replace("$", "")
-                );
+            double nextPrice =
+                    Double.parseDouble(
+                            prices.get(i + 1).getText().replace("$", "")
+                    );
 
-        Assert.assertTrue(
-                firstPrice <= lastPrice,
-                "Products are not sorted from low to high"
-        );
+            Assert.assertTrue(
+                    currentPrice <= nextPrice,
+                    "Prices are not sorted at positions "
+                            + i + " and " + (i + 1)
+            );
+        }
     }
 
 

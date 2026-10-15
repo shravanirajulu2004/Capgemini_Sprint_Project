@@ -1,6 +1,6 @@
 package genericutility;
 
-import org.junit.BeforeClass;
+import org.testng.annotations.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
@@ -31,11 +31,11 @@ public class BaseClass {
 	    Reporter.log("Before Test", true);
 	} 
 	
-	@Parameters("browser")
-	@BeforeClass
-	public void navigateTOApp(@Optional("chrome") String browser) throws Exception {
-	    driver = wu.launchBrowser(browser);
-	}
+//	@Parameters("browser")
+//	@BeforeClass
+//	public void navigateTOApp(@Optional("chrome") String browser) throws Exception {
+//	    driver = wu.launchBrowser(browser);
+//	}
 
     @Parameters("browser")
     @BeforeMethod(alwaysRun = true)
@@ -47,7 +47,6 @@ public class BaseClass {
 
         driver.get(fu.getDataFromPropertyFile("url"));
 
-        Thread.sleep(2000);
 
         LoginPage lp = new LoginPage(driver);
 
@@ -56,13 +55,22 @@ public class BaseClass {
                 fu.getDataFromPropertyFile("password")
         );
 
-        Thread.sleep(1000);
-
-        lp.getLoginbtn();
-
-        Thread.sleep(2000);
+//        Thread.sleep(1000);
+//
+//        lp.getLoginbtn();
+//
+//        Thread.sleep(2000);
     }
 
+//    @AfterMethod(alwaysRun = true)
+//    public void afterMethod() {
+//
+//        Reporter.log("After Method", true);
+//
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
     @AfterMethod(alwaysRun = true)
     public void afterMethod() {
 
@@ -70,6 +78,7 @@ public class BaseClass {
 
         if (driver != null) {
             driver.quit();
+            driver = null;
         }
     }
     

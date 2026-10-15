@@ -15,8 +15,16 @@ import objrepo.InventoryPage;
 
 public class CheckoutTest extends BaseClass {
 	ExcelUtility eu = new ExcelUtility();
+	private void addProductAndOpenCart(
+	        InventoryPage ip,
+	        String productName) {
+
+	    ip.clickAddToCart(productName);
+	    ip.clickCart();
+	}
 
 	//FUNCTIONAL
+	
 	
 	@Test(groups = {"functional", "positive"})
 	public void enterValidCheckoutInformation() throws Exception {
@@ -27,8 +35,9 @@ public class CheckoutTest extends BaseClass {
 	            "CartData.xlsx", "Sheet1", 1, 0
 	        );
 
-	    ip.clickAddToCart(productName);
-	    ip.clickCart();
+//	    ip.clickAddToCart(productName);
+//	    ip.clickCart();
+	    addProductAndOpenCart(ip, productName);
 
 	    CartPage cp = new CartPage(driver);
 	    cp.clickCheckout();
@@ -70,8 +79,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 1, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
 
@@ -116,8 +126,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 3, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
         cp.clickCheckout();
@@ -165,8 +176,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 5, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
         cp.clickCheckout();
@@ -209,11 +221,12 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 4, 0);
 
-        // Product
-        ip.clickAddToCart(productName);
-
-        // Cart
-        ip.clickCart();
+//        // Product
+//        ip.clickAddToCart(productName);
+//
+//        // Cart
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
 
@@ -270,8 +283,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 1, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
 
@@ -300,8 +314,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 3, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
         cp.clickCheckout();
@@ -322,11 +337,7 @@ public class CheckoutTest extends BaseClass {
             cip.getErrorMessage().length() > 0,
             "Validation error message was not displayed"
         );
-        ScreenshotUtility su = new ScreenshotUtility();
-
-        su.takeScreenshot(
-            driver,
-            "checkoutWithBlankFirstName");
+      
     }
     
     // Functional
@@ -339,8 +350,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx","Sheet1", 3, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
         cp.clickCheckout();
@@ -366,8 +378,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 5, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
         cp.clickCheckout();
@@ -415,8 +428,9 @@ public class CheckoutTest extends BaseClass {
 
         String productName = eu.getDataFromExcel("CartData.xlsx", "Sheet1", 4, 0);
 
-        ip.clickAddToCart(productName);
-        ip.clickCart();
+//        ip.clickAddToCart(productName);
+//        ip.clickCart();
+        addProductAndOpenCart(ip, productName);
 
         CartPage cp = new CartPage(driver);
         cp.clickCheckout();

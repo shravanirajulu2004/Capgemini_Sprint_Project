@@ -181,10 +181,6 @@ public class CartTest extends BaseClass {
                 new CartPage(driver).isProductPresent(productName),
                 "Removed product reappeared in Cart"
         );
-        ScreenshotUtility su = new ScreenshotUtility();
 
-        su.takeScreenshot(
-            driver,
-            "verifyRemovedProductNotDisplayed");
     }
 }
